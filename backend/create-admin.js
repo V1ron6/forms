@@ -1,8 +1,10 @@
-import bcrypt from "bcrypt";
-import sql from "./db.js";
+import bcrypt from "bcryptjs";
+import sql from "./Configs/db.js";
+import dotenv from "dotenv"
 
-const username = "admin";
-const password = "ChangeThisPassword123!";
+dotenv.config()
+const username = process.env.admin;
+const password = process.env.adminpass;
 
 const hashedPassword = await bcrypt.hash(password, 12);
 
