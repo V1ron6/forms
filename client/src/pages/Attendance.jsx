@@ -102,7 +102,8 @@ export default function Attendance() {
     }
 
     return (
-       <Navbar />
+    <>
+   <Navbar />
         <main className="attendance-page">
 
             <section className="attendance-card">
@@ -275,5 +276,6 @@ export default function Attendance() {
             </section>
 
         </main>
+</>
     );
 }
