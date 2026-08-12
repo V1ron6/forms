@@ -112,11 +112,6 @@ export default function Attendance() {
                     <span className="attendance-label">
                         ATTENDANCE
                     </span>
-
-                    <p>
-                        Please provide your details to
-                        register your attendance.
-                    </p>
                 </div>
 
                 {error && (
@@ -268,10 +263,6 @@ export default function Attendance() {
                     </button>
 
                 </form>
-
-                <p className="privacy-note">
-                    HGBMI • FRIENDS OF GOD 
-                </p>
 
             </section>
 

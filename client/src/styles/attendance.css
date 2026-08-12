@@ -15,8 +15,12 @@
             circle at bottom right,
             rgba(0, 200, 255, 0.08),
             transparent 35%
-        ),
-        #0b0d12;
+        ),url("./src/assets/background.jpg");
+     background-size: cover;
+     background-repeat : no-repeat;
+     background-position:center;
+
+
 }
 
 .attendance-card {
@@ -24,7 +28,7 @@
     max-width: 520px;
     padding: 40px;
 
-    background: rgba(20, 23, 32, 0.92);
+    background: rgba(0, 0, 0, 0.33);
     border: 1px solid #292e3b;
     border-radius: 20px;
 
@@ -78,7 +82,7 @@
     padding: 0 14px;
 
     color: #f1f3f8;
-    background: #12151d;
+    background: rgba(0,0,0,0.33);
 
     border: 1px solid #303542;
     border-radius: 10px;
