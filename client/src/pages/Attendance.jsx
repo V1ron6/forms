@@ -1,6 +1,7 @@
 import { useState } from "react";
 import api from "../services/api";
 import "../styles/attendance.css";
+import Navbar from "../components/Navbar";
 
 export default function Attendance() {
     const [form, setForm] = useState({
@@ -101,6 +102,7 @@ export default function Attendance() {
     }
 
     return (
+       <Navbar />
         <main className="attendance-page">
 
             <section className="attendance-card">
