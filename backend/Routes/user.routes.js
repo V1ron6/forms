@@ -3,11 +3,11 @@ import express from "express";
 import {
     createUser,
     getUsers
-} from "../controllers/user.controller.js";
+} from "../Controllers/user.controller.js";
 
 import {
     authenticateAdmin
-} from "../middleware/auth.middleware.js";
+} from "../Middleware/auth.middleware.js";
 
 const router = express.Router();
 

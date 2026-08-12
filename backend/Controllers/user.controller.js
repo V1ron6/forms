@@ -1,4 +1,4 @@
-import sql from "../db.js";
+import sql from "../Configs/db.js";
 
 export const createUser = async (req, res) => {
     try {
