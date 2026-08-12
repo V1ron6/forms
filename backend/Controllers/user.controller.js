@@ -26,6 +26,22 @@ export const createUser = async (req, res) => {
             });
         }
 
+        // Check for duplicate attendance
+        const existingUser = await sql`
+            SELECT id
+            FROM users
+            WHERE contact = ${contact.trim()}
+            LIMIT 1
+        `;
+
+        if (existingUser.length > 0) {
+            return res.status(409).json({
+                success: false,
+                message: "Attendance has already been recorded for this contact."
+            });
+        }
+
+        // Create attendance record
         const result = await sql`
             INSERT INTO users (
                 name,
@@ -58,11 +74,20 @@ export const createUser = async (req, res) => {
         });
 
     } catch (error) {
+
+        // Duplicate contact - database protection
+        if (error.code === "23505") {
+            return res.status(409).json({
+                success: false,
+                message: "Attendance has already been recorded for this contact."
+            });
+        }
+
         console.error("Create user error:", error);
 
         return res.status(500).json({
             success: false,
-            message: "Failed to record attendance"
+            message: "Internal server error"
         });
     }
 };
@@ -90,6 +115,7 @@ export const getUsers = async (req, res) => {
         });
 
     } catch (error) {
+
         console.error("Get users error:", error);
 
         return res.status(500).json({
