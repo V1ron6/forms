@@ -1,16 +1,23 @@
 .navbar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+
     width: 100%;
     height: 68px;
 
     display: flex;
     align-items: center;
-    justify-content:space between;
-    background: rgba(0, 0, 0, 0.33);
 
-    border-bottom: 1px solid #272c38;
+    background: rgba(8, 10, 16, 0.72);
 
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+
+    box-shadow:
+        0 8px 30px rgba(0, 0, 0, 0.12);
 }
 
 .navbar-container {
@@ -29,60 +36,217 @@
 .navbar-brand {
     display: flex;
     align-items: center;
-    gap: 11px;
+
+    gap: 13px;
+
+    min-width: 0;
 }
 
+
+/* --------------------------------
+   Logo
+-------------------------------- */
+
 .navbar-logo {
-    width: 36px;
-    height: 36px;
+    width: 40px;
+    height: 40px;
+
+    flex-shrink: 0;
 
     display: flex;
     align-items: center;
     justify-content: center;
 
-    border-radius: 25%;
+    overflow: hidden;
 
-    color: #ffffff;
-    background: transparent;
+    border-radius: 11px;
 
-    font-size: 1rem;
-    font-weight: 800;
-   img{
-     border-radius:25%;
-     }
+    background: rgba(255, 255, 255, 0.05);
+
+    border: 1px solid rgba(255, 255, 255, 0.1);
+
+    box-shadow:
+        0 5px 18px rgba(0, 0, 0, 0.2);
 }
+
+.navbar-logo img {
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
+
+    border-radius: inherit;
+}
+
+
+/* --------------------------------
+   Dividers
+-------------------------------- */
+
+.navbar-divider {
+    width: 1px;
+    height: 22px;
+
+    flex-shrink: 0;
+
+    background: linear-gradient(
+        to bottom,
+        transparent,
+        rgba(255, 255, 255, 0.22),
+        transparent
+    );
+}
+
+
+/* --------------------------------
+   Brand names
+-------------------------------- */
 
 .navbar-name {
-    color: #ffffff;
+    color: #f2f3f7;
 
-    font-size: 0.8rem;
-    font-weight: 700;
+    font-size: 0.76rem;
+    font-weight: 750;
 
-    letter-spacing: -0.01em;
+    letter-spacing: 0.02em;
+
+    line-height: 1.2;
+
+    white-space: nowrap;
+}
+
+.navbar-fellowship {
+    color: #938cff;
+
+    font-size: 0.72rem;
+
+    letter-spacing: 0.08em;
 }
 
 
-/* Mobile */
+/* --------------------------------
+   Subtle hover effect
+-------------------------------- */
+
+.navbar-brand {
+    transition: opacity 0.2s ease;
+}
+
+.navbar-brand:hover {
+    opacity: 0.92;
+}
+
+
+/* --------------------------------
+   Tablet
+-------------------------------- */
+
+@media (max-width: 850px) {
+
+    .navbar-container {
+        padding: 0 20px;
+    }
+
+    .navbar-brand {
+        gap: 10px;
+    }
+
+    .navbar-logo {
+        width: 36px;
+        height: 36px;
+    }
+
+    .navbar-name {
+        font-size: 0.68rem;
+    }
+
+    .navbar-fellowship {
+        font-size: 0.65rem;
+    }
+
+    .navbar-divider {
+        height: 19px;
+    }
+}
+
+
+/* --------------------------------
+   Mobile
+-------------------------------- */
 
 @media (max-width: 600px) {
+
     .navbar {
         height: 60px;
     }
 
     .navbar-container {
-        padding: 0 16px;
+        padding: 0 15px;
+    }
+
+    .navbar-brand {
+        width: 100%;
+
+        gap: 9px;
+    }
+
+    .navbar-logo {
+        width: 34px;
+        height: 34px;
+
+        border-radius: 9px;
+    }
+
+    .navbar-name {
+        overflow: hidden;
+
+        font-size: 0.59rem;
+
+        text-overflow: ellipsis;
+    }
+
+    .navbar-fellowship {
+        flex-shrink: 0;
+
+        font-size: 0.58rem;
+
+        letter-spacing: 0.05em;
+    }
+
+    .navbar-divider {
+        height: 17px;
+    }
+}
+
+
+/* --------------------------------
+   Very small phones
+-------------------------------- */
+
+@media (max-width: 380px) {
+
+    .navbar-container {
+        padding: 0 11px;
+    }
+
+    .navbar-brand {
+        gap: 7px;
     }
 
     .navbar-logo {
         width: 32px;
         height: 32px;
-
-        border-radius: 8px;
-
-        font-size: 0.9rem;
     }
 
     .navbar-name {
-        font-size: 0.9rem;
+        max-width: 150px;
+
+        font-size: 0.55rem;
+    }
+
+    .navbar-fellowship {
+        font-size: 0.53rem;
     }
 }

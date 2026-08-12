@@ -1,5 +1,5 @@
 import "../styles/navbar.css";
-import logo from "../assets/logo.jpg"
+import logo from "../assets/logo.jpg";
 
 export default function Navbar() {
     return (
@@ -7,17 +7,26 @@ export default function Navbar() {
             <div className="navbar-container">
 
                 <div className="navbar-brand">
+
                     <div className="navbar-logo">
-                        <img src={logo} width={20} height={20} />
+                        <img
+                            src={logo}
+                            alt="Hour of Grace Belivers Ministry International"
+                        />
                     </div>
-                   <p>|</p>
+
+                    <span className="navbar-divider" />
+
                     <span className="navbar-name">
                         HOUR OF GRACE BELIVERS MINISTRY INTERNATIONAL
                     </span>
-                   <p>|</p>
-            <span className="navbar-name">
+
+                    <span className="navbar-divider" />
+
+                    <span className="navbar-name navbar-fellowship">
                         LIGHT FELLOWSHIP
                     </span>
+
                 </div>
 
             </div>

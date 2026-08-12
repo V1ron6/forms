@@ -64,7 +64,7 @@ export default function Attendance() {
         } catch (err) {
             setError(
                 err.response?.data?.message ||
-                "Unable to submit attendance. Please try again."
+                    "Unable to submit attendance. Please try again."
             );
         } finally {
             setLoading(false);
@@ -73,200 +73,244 @@ export default function Attendance() {
 
     if (submitted) {
         return (
-            <main className="attendance-page">
-                <section className="attendance-success">
+            <>
+                <Navbar />
 
-                    <div className="success-icon">
-                        ✓
-                    </div>
+                <main className="attendance-page">
+                    <section className="attendance-success">
+                        <div className="success-check">
+                            <span>✓</span>
+                        </div>
 
-                    <h1>Attendance Recorded</h1>
+                        <span className="success-label">
+                            CHECK-IN COMPLETE
+                        </span>
 
-                    <p>
-                        Your attendance has been successfully
-                        registered.
-                    </p>
+                        <h1>Attendance Recorded</h1>
 
-                    <button
-                        onClick={() => {
-                            setSubmitted(false);
-                            setError("");
-                        }}
-                    >
-                        Register Another
-                    </button>
+                        <p>
+                            Your attendance has been successfully
+                            registered. Thank you for joining us.
+                        </p>
 
-                </section>
-            </main>
+                        <button
+                            className="register-again"
+                            onClick={() => {
+                                setSubmitted(false);
+                                setError("");
+                            }}
+                        >
+                            Register Another
+                        </button>
+                    </section>
+                </main>
+            </>
         );
     }
 
     return (
-    <>
-   <Navbar />
-        <main className="attendance-page">
+        <>
+            <Navbar />
 
-            <section className="attendance-card">
+            <main className="attendance-page">
+                <div className="attendance-glow glow-one" />
+                <div className="attendance-glow glow-two" />
 
-                <div className="attendance-header">
-                    <span className="attendance-label">
-                        ATTENDANCE
-                    </span>
-                </div>
+                <section className="attendance-card">
 
-                {error && (
-                    <div className="form-error" role="alert">
-                        {error}
-                    </div>
-                )}
-
-                <form
-                    className="attendance-form"
-                    onSubmit={handleSubmit}
-                >
-
-                    {/* Name */}
-                    <div className="form-group">
-                        <label htmlFor="name">
-                            Name
-                        </label>
-
-                        <input
-                            id="name"
-                            name="name"
-                            type="text"
-                            placeholder="Enter your full name"
-                            value={form.name}
-                            onChange={handleChange}
-                            maxLength={50}
-                            autoComplete="name"
-                            required
-                        />
-                    </div>
-
-                    {/* Contact */}
-                    <div className="form-group">
-                        <label htmlFor="contact">
-                            Contact
-                        </label>
-
-                        <input
-                            id="contact"
-                            name="contact"
-                            type="tel"
-                            placeholder="e.g. 0241234567"
-                            value={form.contact}
-                            onChange={handleChange}
-                            maxLength={20}
-                            autoComplete="tel"
-                            required
-                        />
-                    </div>
-
-                    {/* Hostel */}
-                    <div className="form-group">
-                        <label htmlFor="hostel">
-                            Hostel
-                        </label>
-
-                        <input
-                            id="hostel"
-                            name="hostel"
-                            type="text"
-                            placeholder="Enter your hostel"
-                            value={form.hostel}
-                            onChange={handleChange}
-                            maxLength={50}
-                            required
-                        />
-                    </div>
-
-                    {/* Invited By */}
-                    <div className="form-group">
-                        <label htmlFor="invitedBy">
-                            Invited by
-                        </label>
-
-                        <input
-                            id="invitedBy"
-                            name="invitedBy"
-                            type="text"
-                            placeholder="Who invited you?"
-                            value={form.invitedBy}
-                            onChange={handleChange}
-                            maxLength={100}
-                            required
-                        />
-                    </div>
-
-                    {/* Member */}
-                    <fieldset className="member-fieldset">
-
-                        <legend>
-                            Are you a member?
-                        </legend>
-
-                        <div className="member-options">
-
-                            <div className="member-option">
-                                <input
-                                    id="member-yes"
-                                    type="radio"
-                                    name="member"
-                                    checked={form.member === true}
-                                    onChange={() =>
-                                        handleMemberChange(true)
-                                    }
-                                />
-
-                                <label htmlFor="member-yes">
-                                    <span className="radio-dot" />
-                                    Yes
-                                </label>
-                            </div>
-
-                            <div className="member-option">
-                                <input
-                                    id="member-no"
-                                    type="radio"
-                                    name="member"
-                                    checked={form.member === false}
-                                    onChange={() =>
-                                        handleMemberChange(false)
-                                    }
-                                />
-
-                                <label htmlFor="member-no">
-                                    <span className="radio-dot" />
-                                    No
-                                </label>
-                            </div>
-
+                    <div className="attendance-header">
+                        <div className="header-badge">
+                            <span className="badge-dot" />
+                            ATTENDANCE
                         </div>
 
-                    </fieldset>
+                        <h1>
+                            Welcome.
+                            <br />
+                            <span>Let's check you in.</span>
+                        </h1>
 
-                    {/* Submit */}
-                    <button
-                        className="attendance-submit"
-                        type="submit"
-                        disabled={loading}
+                        <p>
+                            Please provide your details below to
+                            register your attendance.
+                        </p>
+                    </div>
+
+                    {error && (
+                        <div className="form-error" role="alert">
+                            <span>!</span>
+                            {error}
+                        </div>
+                    )}
+
+                    <form
+                        className="attendance-form"
+                        onSubmit={handleSubmit}
                     >
-                        {loading ? (
-                            <>
-                                <span className="spinner" />
-                                Submitting...
-                            </>
-                        ) : (
-                            "Register Attendance"
-                        )}
-                    </button>
+                        <div className="form-group">
+                            <label htmlFor="name">
+                                <span className="field-number">01</span>
+                                Full Name
+                            </label>
 
-                </form>
+                            <div className="input-wrapper">
+                                <input
+                                    id="name"
+                                    name="name"
+                                    type="text"
+                                    placeholder="Enter your full name"
+                                    value={form.name}
+                                    onChange={handleChange}
+                                    maxLength={50}
+                                    autoComplete="name"
+                                    required
+                                />
+                            </div>
+                        </div>
 
-            </section>
+                        <div className="form-group">
+                            <label htmlFor="contact">
+                                <span className="field-number">02</span>
+                                Contact Number
+                            </label>
 
-        </main>
-</>
+                            <div className="input-wrapper">
+                                <input
+                                    id="contact"
+                                    name="contact"
+                                    type="tel"
+                                    placeholder="e.g. 024 123 4567"
+                                    value={form.contact}
+                                    onChange={handleChange}
+                                    maxLength={20}
+                                    autoComplete="tel"
+                                    required
+                                />
+                            </div>
+                        </div>
+
+                        <div className="form-group">
+                            <label htmlFor="hostel">
+                                <span className="field-number">03</span>
+                                Hostel / Residence
+                            </label>
+
+                            <div className="input-wrapper">
+                                <input
+                                    id="hostel"
+                                    name="hostel"
+                                    type="text"
+                                    placeholder="Enter your hostel"
+                                    value={form.hostel}
+                                    onChange={handleChange}
+                                    maxLength={50}
+                                    required
+                                />
+                            </div>
+                        </div>
+
+                        <div className="form-group">
+                            <label htmlFor="invitedBy">
+                                <span className="field-number">04</span>
+                                Invited By
+                            </label>
+
+                            <div className="input-wrapper">
+                                <input
+                                    id="invitedBy"
+                                    name="invitedBy"
+                                    type="text"
+                                    placeholder="Who invited you?"
+                                    value={form.invitedBy}
+                                    onChange={handleChange}
+                                    maxLength={100}
+                                    required
+                                />
+                            </div>
+                        </div>
+
+                        <fieldset className="member-fieldset">
+                            <legend>
+                                <span className="field-number">05</span>
+                                Are you a member?
+                            </legend>
+
+                            <div className="member-options">
+                                <div className="member-option">
+                                    <input
+                                        id="member-yes"
+                                        type="radio"
+                                        name="member"
+                                        checked={form.member === true}
+                                        onChange={() =>
+                                            handleMemberChange(true)
+                                        }
+                                    />
+
+                                    <label htmlFor="member-yes">
+                                        <span className="member-icon">
+                                            ✓
+                                        </span>
+
+                                        <span>
+                                            <strong>Yes</strong>
+                                            <small>I am a member</small>
+                                        </span>
+                                    </label>
+                                </div>
+
+                                <div className="member-option">
+                                    <input
+                                        id="member-no"
+                                        type="radio"
+                                        name="member"
+                                        checked={form.member === false}
+                                        onChange={() =>
+                                            handleMemberChange(false)
+                                        }
+                                    />
+
+                                    <label htmlFor="member-no">
+                                        <span className="member-icon">
+                                            +
+                                        </span>
+
+                                        <span>
+                                            <strong>No</strong>
+                                            <small>I'm a visitor</small>
+                                        </span>
+                                    </label>
+                                </div>
+                            </div>
+                        </fieldset>
+
+                        <button
+                            className="attendance-submit"
+                            type="submit"
+                            disabled={loading}
+                        >
+                            {loading ? (
+                                <>
+                                    <span className="spinner" />
+                                    Recording attendance...
+                                </>
+                            ) : (
+                                <>
+                                    Register Attendance
+                                    <span className="button-arrow">
+                                        →
+                                    </span>
+                                </>
+                            )}
+                        </button>
+
+                        <p className="privacy-note">
+                            Your information is used only for attendance
+                            registration.
+                        </p>
+                    </form>
+                </section>
+            </main>
+        </>
     );
 }
