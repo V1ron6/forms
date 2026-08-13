@@ -13,8 +13,8 @@
     background:
         linear-gradient(
             135deg,
-            rgba(8, 10, 17, 0.92),
-            rgba(12, 15, 27, 0.88)
+            rgba(8, 10, 17, 0.56),
+            rgba(12, 15, 27, 0.48)
         ),
         url("../assets/background.jpg");
 
